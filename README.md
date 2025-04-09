@@ -1,6 +1,7 @@
 # cilisplore
 
 Prosjekt for å sette opp et 3-node kind cluster med cilium CNI, hubble og headlamp
+
 cilium benyttes som ingress og kube-proxy erstattning.
 
 # Forutsetninger
