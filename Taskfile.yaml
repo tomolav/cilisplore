@@ -1,14 +1,19 @@
 version: '3'
 
+
+vars:
+  cluster_name: cilisplore 
+
 tasks:
   up:
     cmds: 
       - helm repo add cilium https://helm.cilium.io/ --force-update
       - helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/ --force-update
-      - kind create cluster -n kind --config=cluster.yaml
-      - helm upgrade --install cilium cilium/cilium --version 1.17.2 --namespace kube-system --values cilium-helm-values.yaml
-      - helm upgrade --install headlamp headlamp/headlamp --namespace kube-system -f headlamp-helm-values.yaml
+      - kind create cluster -n {{ .cluster_name }} --config=cluster.yaml
+      - helm upgrade --install cilium cilium/cilium --version 1.17.2 --namespace kube-system --values cilium-helm-values.yaml --set k8sServiceHost={{.cluster_name}}-control-plane
+      - helm upgrade --install tetragon cilium/tetragon --version 1.4.0 --namespace kube-system -f tetragon-helm-vaules.yaml
+      - helm upgrade --install headlamp headlamp/headlamp --version 0.30.1 --namespace kube-system -f headlamp-helm-values.yaml
 
   down:
     cmds:
-      - kind delete cluster -n kind
+      - kind delete cluster -n {{ .cluster_name }} 

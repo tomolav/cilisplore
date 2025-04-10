@@ -2,6 +2,9 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
+  extraMounts:
+      - hostPath: /proc
+        containerPath: /procHost
   extraPortMappings:
   - containerPort: 30080
     hostPort: 80
@@ -12,7 +15,13 @@ nodes:
     listenAddress: 127.0.0.1
     protocol: TCP
 - role: worker
+  extraMounts:
+    - hostPath: /proc
+      containerPath: /procHost
 - role: worker
+  extraMounts:
+    - hostPath: /proc
+      containerPath: /procHost
 networking:
   disableDefaultCNI: true
   kubeProxyMode: none
