@@ -1,6 +1,6 @@
 # cilisplore
 
-Prosjekt for å sette opp et 3-node kind cluster med cilium CNI, hubble og headlamp
+Prosjekt for å sette opp et 3-node kind cluster med cilium CNI, hubble, tetragon og headlamp
 
 cilium benyttes som ingress og kube-proxy erstattning.
 
@@ -24,6 +24,9 @@ For å opprette et token for headlamp pålogging:
 ```
 kubectl create token headlamp --namespace kube-system
 ```
+
+# Tetragon
+Ikke noe UI på dette, selve tetragon er installert og kjører, men ingen monitoring eller enforce policy.
 
 
 # Installasjon:
