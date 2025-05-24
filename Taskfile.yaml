@@ -8,14 +8,8 @@ tasks:
   up:
     cmds: 
       - helm repo add cilium https://helm.cilium.io/ --force-update
-      - helm repo add kyverno https://kyverno.github.io/kyverno/ --force-update
-      - helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/ --force-update
       - kind create cluster -n {{ .cluster_name }} --config=cluster.yaml
-      - helm upgrade --install cilium cilium/cilium --version 1.17.2 --namespace kube-system --values cilium-helm-values.yaml --set k8sServiceHost={{.cluster_name}}-control-plane
-      - helm upgrade --install tetragon cilium/tetragon --version 1.4.0 --namespace kube-system -f tetragon-helm-vaules.yaml
-      - helm upgrade --install kyverno kyverno/kyverno --version 3.3.7 --namespace kyverno-system --create-namespace
-      - helm upgrade --install kyverno-policies kyverno/kyverno-policies --version 3.3.4 --namespace kyverno-system
-      - helm upgrade --install headlamp headlamp/headlamp --version 0.30.1 --namespace kube-system -f headlamp-helm-values.yaml
+      - helm upgrade --install cilium cilium/cilium --version 1.17.4 --namespace kube-system --values cilium-helm-values.yaml --set k8sServiceHost={{.cluster_name}}-control-plane
 
   down:
     cmds:

@@ -1,3 +1,0 @@
-tetragon:
-  enableProcessCred: true
-  hostProcPath: /procHost
