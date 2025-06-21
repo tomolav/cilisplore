@@ -3,13 +3,14 @@ version: '3'
 
 vars:
   cluster_name: cilisplore 
+  cilium_version: 1.17.5
 
 tasks:
   up:
     cmds: 
       - helm repo add cilium https://helm.cilium.io/ --force-update
       - kind create cluster -n {{ .cluster_name }} --config=cluster.yaml
-      - helm upgrade --install cilium cilium/cilium --version 1.17.4 --namespace kube-system --values cilium-helm-values.yaml --set k8sServiceHost={{.cluster_name}}-control-plane
+      - helm upgrade --install cilium cilium/cilium --version {{ cilium_version }} --namespace kube-system --values cilium-helm-values.yaml --set k8sServiceHost={{.cluster_name}}-control-plane
 
   down:
     cmds:
