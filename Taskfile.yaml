@@ -10,7 +10,7 @@ tasks:
     cmds: 
       - helm repo add cilium https://helm.cilium.io/ --force-update
       - kind create cluster -n {{ .cluster_name }} --config=cluster.yaml
-      - helm upgrade --install cilium cilium/cilium --version {{ cilium_version }} --namespace kube-system --values cilium-helm-values.yaml --set k8sServiceHost={{.cluster_name}}-control-plane
+      - helm upgrade --install cilium cilium/cilium --version {{ .cilium_version }} --namespace kube-system --values cilium-helm-values.yaml --set k8sServiceHost={{.cluster_name}}-control-plane
 
   down:
     cmds:
