@@ -3,7 +3,7 @@ version: '3'
 
 vars:
   cluster_name: cilisplore 
-  cilium_version: 1.17.5
+  cilium_version: 1.18.1
 
 tasks:
   up:

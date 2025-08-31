@@ -1,6 +1,6 @@
 # cilisplore
 
-Prosjekt for å sette opp et 3-node kind cluster med cilium CNI og  hubble
+Prosjekt for å sette opp et 3-node kind cluster med cilium CNI og hubble
 
 cilium benyttes som ingress og kube-proxy erstattning.
 
@@ -32,7 +32,6 @@ Url: http://hubble-ui.127.0.0.1.nip.io/
 ```
 task up
 ```
-
 
 # Avinstallasjon
 ```
